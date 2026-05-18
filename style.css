@@ -1,37 +1,125 @@
-/* Style the links inside the sidenav */
-#mySidenav a {
-  position: absolute; /* Position them relative to the browser window */
-  left: -80px; /* Position them outside of the screen */
-  transition: 0.3s; /* Add transition on hover */
-  padding: 15px; /* 15px padding */
-  width: 100px; /* Set a specific width */
-  text-decoration: none; /* Remove underline */
-  font-size: 20px; /* Increase font size */
-  color: white; /* White text color */
-  border-radius: 0 5px 5px 0; /* Rounded corners on the top right and bottom right side */
+body {
+  background-color: gray;
+}
+a:link {
+  color: Pink;
+  background-color: Black;
+  text-decoration: none;
+  transition: all 0.2s;
 }
 
-#mySidenav a:hover {
-  left: 0; /* On mouse-over, make the elements appear as they should */
+a:visited {
+  color: pink;
+  background-color: transparent;
+  text-decoration: none;
 }
 
-/* The about link: 20px from the top with a green background */
-#about {
-  top: 20px;
-  background-color: #04AA6D;
+a:hover {
+  color: purple;
+  font-size: 18px;
+  background-color: transparent;
+  text-decoration: none;
 }
 
-#blog {
-  top: 80px;
-  background-color: #2196F3; /* Blue */
+a:active {
+  color: black;
+  background-color: transparent;
+  text-decoration: none;
 }
 
-#projects {
-  top: 140px;
-  background-color: #f44336; /* Red */
+\\ body {
+  background-image: url("BG.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
-#contact {
+div.section {
+  min-height: 100vh;
+  margin: 20px;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+div.menu {
+  font-family: "Source Code Pro", system-ui;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 22px;
+  width: 80px;
+  overflow: hidden;
+  background-color: black;
+  color: pink;
+  transition: all 0.2s;
+}
+
+div.menu:hover {
+  height: 120px;
+  width: 80px;
+  background-color: black;
+}
+
+div.header {
+  text-align: right;
+  font-family: "Source Code Pro", system-ui;
+  font-size: 20px;
+  transition: all 0.5s;
+}
+
+div.header:hover {
+  font-size: 22px;
+}
+
+p {
+  font-size: 25px;
+  margin: 10px;
+  color: pink;
+  text-align: left;
+  transition: all 0.2s;
+}
+
+h1 {
+  color: pink;
+}
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+p.big {
+  font-size: 35px;
+  margin: 10px;
+  color: pink;
+  float: right;
+}
+
+img {
+  width: 300px;
+  transition: all 0.5s;
+}
+
+img.move:hover {
+  width: 350px;
+  rotate: 5deg;
+}
+
+img.left {
+  float: right;
+  padding: 30px;
+}
+img.bigred {
+  float: center;
+}
+
+p.order {
+  font-size: 45px;
+}
+
   top: 200px;
   background-color: #555 /* Light Black */
 }

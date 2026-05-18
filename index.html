@@ -1,16 +1,638 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>My Website</title>
-    <link rel="stylesheet" href="style.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+
+
+
+  <meta charset="UTF-8">
+  <title>pokemans</title>
+
+<script>
+//credits:
+   //Aryaman:
+       // visuals
+       // turn and damage logic
+       // using items
+        //button cooldown
+       // some css
+        //textbox
+   // Arthur:
+            //positions for bg, menus, and pokemon
+            //most if not all css
+            //health bar logic
+            //most of the other logic such as
+                //behind the scenes hp
+                //showing both your and the rivals pokemon
+                //and others
+                
+    //extensions: button cooldown, all custom visuals, health bar system (maybe?)
+</script>
+
+  <style>
+  body {
+      background-color: black;
+    }
+
+    div#container {
+      position: relative;
+      height: 900px;
+      width: 1600px;
+      left: 6%;
+      background-image:url(".png");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color:white;
+      overflow:hidden;
+      
+    }
+    
+    #drawing {
+        visibility: hidden;
+        position: absolute;
+        z-index: 1000;
+    }
+    
+    button {
+         font-family: 'JetBrains Mono';
+      height: 125px;
+      width: 360px;
+      font-size: 40px;
+      border: solid black 3px;
+      background-color:white;
+    }
+    
+    table {
+      position: absolute;
+      top: 650px; 
+      left: 920px;
+    }
+
+    img#start1 {
+      position: absolute;
+      transition: 1s;
+    }
+    
+    img#start2 {
+      position: absolute;
+       transition: 1s;
+    }
+    
+    img#start3 {
+      position: absolute;
+       transition: 1s;
+    }
+    
+    img#start1:hover{
+        transform: scale(1.1);
+    }
+    
+      img#start2:hover{
+        transform: scale(1.1);
+    }
+    
+      img#start3:hover{
+        transform: scale(1.1);
+    }
+    
+    
+    img#image {
+      position: absolute;
+    }
+    
+    
+     img#start1behind {
+      position: absolute;
+    }
+        img#start2behind {
+      position: absolute;
+    }
+    
+    
+     img#start3behind {
+      position: absolute;
+    }
+    
+    
+    h1{
+        text-align:center;
+        font-size:45px;
+    }
+    #bg{
+      position: absolute;
+      height: 900px;
+      width: 1600px;
+    }
+    
+    
+    div{
+         position: absolute;
+    }
+    
+    
+    #playa{
+         position: absolute;
+          visibility: hidden;
+        z-index: 1000;
+         transform: scaleX(-1);
+        top:490px;
+        left:730px
+    }
+    
+    
+    #drawing{
+         position: absolute;
+           top:10px;
+         left:0px
+    }
+    
+    #textbox{
+         font-family: 'JetBrains Mono';
+        top:800px;
+        left:0px;
+        width:921px;
+        height:150px;
+        background-color:white;
+        border: solid black 3px;
+         z-index: 2000;
+         font-size: 40px;
+        
+        
+    }
+  </style>
+  <script src="https://wudkskytmb-2859130717-a.codehs.me/library.js"></script>
+  
+
 </head>
+
 <body>
-    <main>
-        <h1>Welcome</h1>
-    </main>
-    <script src="index.js"></script>
+    
+      
+  
+
+<script>
+
+start = 0
+rival = 0
+select = 0
+item = 0
+
+
+hp = 100
+rivhp = 150
+hpstart = 100
+rivhpstart = 150
+
+turn = 0
+
+function battle(){
+     setCSS("bg","visibility","visible")
+     setCSS("drawing","visibility","visible")
+     setCSS("playa","visibility","visible")
+     setCSS("textbox","visibility","visible")
+     setCSS("table","visibility","visible")
+     if (rival == "mudkip") {
+        setCSS("start1","width","400px")
+         setCSS("start1","visibility","visible")
+         setCSS("start1","top","0px")
+         setCSS("start1","left","1100px")
+            setCSS("start2behind","visibility","visible")
+              change("t","Flamethrower")
+              
+         
+     }
+     if (rival == "treeko") {
+        setCSS("start3","width","350px")
+         setCSS("start3","visibility","visible")
+         setCSS("start3","top","0px")
+         setCSS("start3","left","1000px")
+         
+          setCSS("start1behind","visibility","visible")
+          
+          
+         setCSS("start1behind","top","200px")
+         setCSS("start1behind","left","50px")
+         
+         change("t","Surf")
+         
+         
+         
+         
+         setCSS("start1behind" , "top")
+     }
+     if (rival == "torchic") {
+         setCSS("start2","visibility","visible")
+         setCSS("start2","top","-30px")
+         setCSS("start2","left","1075px")
+         
+          setCSS("start3behind","visibility","visible")
+          
+          
+           change("t","Razor Leaf")
+           
+           
+     }
+}
+
+
+
+function torchic(){
+    if (select == 0){
+    select = 1
+    turn = 1
+    start = "torchic"
+    rival = "mudkip"
+    //getting rid of start screen
+    setCSS("image","visibility","hidden")
+    setCSS("start1","visibility","hidden")
+    setCSS("start2","visibility","hidden")
+    setCSS("start3","visibility","hidden")
+    console.log(start)
+    setCSS("container","background-color","black")
+    setTimeout ("battle()", 1000);
+    }
+    
+    //getting rid of start screen
+    
+}
+function mudkip(){
+    console.log(hp)
+    if (select == 0){
+    select = 1
+    turn = 2
+    start = "mudkip"
+    rival = "treeko"
+    //getting rid of start screen
+    setCSS("image","visibility","hidden")
+    setCSS("start1","visibility","hidden")
+    setCSS("start2","visibility","hidden")
+    setCSS("start3","visibility","hidden")
+    console.log("mudkip")
+    setCSS("container","background-color","black")
+    setTimeout ("battle()", 1000);
+    }
+    
+    
+//getting rid of start screen
+}
+function treeko(){
+    if (select == 0){
+        console.log(select)
+    select = 1
+    turn = 1
+    start = "treeko"
+    rival = "torchic"
+//getting rid of start screen
+    setCSS("image","visibility","hidden")
+    setCSS("start1","visibility","hidden")
+    setCSS("start2","visibility","hidden")
+    setCSS("start3","visibility","hidden")
+    console.log("treeko")
+    setCSS("container","background-color","black")
+    setTimeout ("battle()", 1000);
+    }
+    
+    
+//getting rid of start screen
+}
+
+
+//attackoing moves, rolls dice for crit chance and damage value, changes rivhp to tha vlaue, turns turn to 2, which is rival turn
+function tackle(){
+    if (turn = 1){
+        let crit = Math.ceil(Math.random()*6);
+        let val = 3 + Math.ceil(Math.random()*3);
+            if (crit == 1){
+                val = val * 2
+                change("textbox"," Critical Hit! Tackle hit for " + val + "!" )
+                rivhp = rivhp - val
+                add("textbox","<br>")
+                add("textbox","Rival hp is now " + rivhp + "!")
+                setTimeout("turner()",1000)
+              
+            }
+            else{
+                  rivhp = rivhp - val
+                change("textbox","Tackle hit for " + val + "!" )
+                rivhp = rivhp - val
+                 add("textbox","<br>")
+                add("textbox","Rival hp is now " + rivhp + "!")
+                setTimeout("turner()",1000)
+            }
+    }
+    
+    setCSS("table","visibility","visible")
+    setCSS("attack","visibility","hidden")
+    
+}
+function typemove(){
+    if (turn = 1){
+        let crit = Math.ceil(Math.random()*2);
+        let val = 3 + Math.ceil(Math.random()*3);
+        if (crit == 2){
+            change("textbox"," Critical Hit! Type move hit for " + val + "!" )
+            val = val * 4
+            
+              rivhp = rivhp - val
+                add("textbox","<br>")
+            add("textbox","Rival hp is now " + rivhp + "!")
+              setTimeout("turner()",1000)
+              
+        }
+        else{
+             change("textbox","Type move hit for " + val + "!" )
+            
+            rivhp = rivhp - val
+            add("textbox","<br>")
+                add("textbox","Rival hp is now " + rivhp + "!")
+             setTimeout("turner()",1000)
+        }
+    }
+    
+    
+            
+    setCSS("table","visibility","visible")
+    setCSS("attack","visibility","hidden")
+}
+
+function potion() {
+    if (hp <= 75 && item == 0){
+        let val = 20 + Math.ceil(Math.random()*5);
+        hp = hp + val
+        change("textbox","Potion Used! Hp is now " + hp + "!" )
+        item = 1
+         change("w","Potion 0x" )
+          setTimeout("turner()",1000)
+    }
+    else if (hp>75 && item == 0){
+        change("textbox"," Hp not low enough! Hp is  " + hp + ", You need to be 75 and below!" )
+    }
+    else{
+        change("textbox","one is enough stop being greedy" )
+    }
+        
+    
+}
+
+
+function turner(){
+
+    if (turn == 1){
+        turn = 2
+        rivaal()
+    }
+    else {
+        turn = 1
+    }
+
+}
+// rolls a dice to deterimine what move it is going to use, it then rolls two more dice, one for crit chance, and one for damage vlaue, it then switchs the turn to turn 1, which makes it your turn.
+function rivaal(){
+    if (turn == 2){
+           console.log("rival turn")
+        
+        
+    
+        var move = Math.ceil(Math.random()*2);
+    
+    if (move == 1){
+        
+            var crit = Math.ceil(Math.random()*8);
+            var val = 2 + Math.ceil(Math.random()*3);
+        if (crit == 8){
+            console.log("crit")
+            val = val * 2
+            hp = hp - val
+            change("textbox"," Critical Hit! Rival Tackle hit for " + val + "!" )
+              add("textbox","<br>")
+            add("textbox"," Your hp is now " + hp + "!")
+              setTimeout("turner()",1000)
+
+              
+    }
+    
+    else{
+        hp = hp - val
+        change("textbox","Rival Tackle hit for " + val + "!" )
+             add("textbox","<br>")
+            add("textbox"," Your hp is now " + hp + "!")
+              setTimeout("turner()",1000)
+        }
+    }
+
+    if (move == 2){
+    var crit = Math.ceil(Math.random()*8);
+    var val = 6 + Math.ceil(Math.random()*4);
+    if (crit == 8){
+      
+        val = val * 2
+        
+           hp = hp - val
+           change("textbox"," Crit! Rival Type Move hit for " + val + "!" )
+              add("textbox","<br>")
+            add("textbox"," Your hp is now " + hp + "!")
+              setTimeout("turner()",1000)
+              
+    }
+    else{
+         hp = hp - val
+               change("textbox","Rival Type Move hit for " + val + "!" )
+             add("textbox","<br>")
+            add("textbox"," Your hp is now " + hp + "!")
+              setTimeout("turner()",1000)
+
+    }
+    
+    }
+    
+    
+    }
+    
+}
+function fight() {
+
+    setCSS("table","visibility","hidden")
+    setCSS("attack","visibility","visible")
+
+}
+
+function bag() {
+
+    setCSS("table","visibility","hidden")
+    setCSS("bag","visibility","visible")
+
+}
+
+
+function death(){
+ if (hp <= 0){
+     console.log("you died")
+      setCSS("table","visibility","hidden")
+    setCSS("attack","visibility","hidden")
+     change("textbox","Your Pokemon Fainted, You lost! Maybe try checking your bag!" )
+    }
+    
+  if (rivhp <= 0){
+      console.log("you womn")
+      setCSS("table","visibility","hidden")
+    setCSS("attack","visibility","hidden")
+       change("textbox","You defeated your rival, You win! Try the other starters!" )
+  }
+}
+
+//buytton cooldown functon, cooldown of 1.5 seconds so you canmt spam and break the hame
+function cooldown(){
+    setCSS("table","visibility","hidden")
+    setCSS("attack","visibility","hidden")
+    setCSS("bag","visibility","hidden")
+    
+    setTimeout("cooldownend()", 2000);
+}
+
+
+function cooldownend(){
+     console.log("cooldown end")
+     setCSS("table","visibility","visible")
+    
+    
+}
+//timers n stuff go down here
+
+   var timerNum = setInterval("health()", 1);
+var timerNum2 = setInterval("rivalhp()", 1);
+setInterval("death()", 1);
+
+
+</script>
+
+
+    
+
+
+   
+  <div id="container">
+   
+
+ 
+
+     
+ 
+ 
+ <img  id="bg" src="FINAL.png" style="width: 1600px; visibility:hidden"> 
+
+
+    
+         <div id="textbox" style="visibility:hidden;"> Rival challenges you to a battle!</div>
+         
+         
+         
+    <table  id="table" style="visibility:hidden;">
+    <tr>
+      <th><button onclick="fight();">FIGHT</button></th>
+      <th><button onclick="bag();">BAG</button></th>
+    </tr>
+    
+    <tr>
+      <th><button  onclick="alert('this is ur only pokemon broke boy')">POKEMON</button></th>
+      <th><button  onclick="alert('coward')">RUN</button></th>
+    </tr>
+  </table>
+      
+      
+      
+      
+      
+    <table  id="attack" style="visibility:hidden;">
+    <tr>
+      <th><button id  = "movebutton" onclick="tackle();cooldown()">Tackle</button></th>
+      <th><button onclick="typemove();cooldown()"> <div id="t"> type move </div> </button></th>
+    </tr>
+    
+    <tr>
+      <th><button ></button></th>
+      <th><button></button></th>
+    </tr>
+  </table>
+  
+  <table  id="bag" style="visibility:hidden;">
+    <tr>
+      <th><button id  = "movebutton" onclick="alert('cant catch ur rivals pokemon dummy')">Pokeball x 5</button></th>
+      <th><button onclick="potion();cooldown()"> <div id="w">Potion x1 </div> </button></th>
+    </tr>
+    
+    <tr>
+      <th><button ></button></th>
+      <th><button></button></th>
+    </tr>
+  </table>
+  
+  
+     
+      
+      
+  
+   <canvas id="drawing" height=200px width=1100px>
+    Your browser does not support canvas elements.
+    </canvas>
+    
+    <script>
+    function rivalhp(){
+        var canvas = document.getElementById("drawing");
+        var ctx = canvas.getContext("2d"); 
+          ctx.fillStyle = "black";
+            ctx.fillRect(0,50,940,25)
+            ctx.fillStyle = "green";
+            let rivalbar = rivhp/rivhpstart * 940
+            ctx.fillRect(0,50,rivalbar,25);
+    }
+    </script>
+    
+    
+    
+    <canvas id="playa" height=150px width=1100px>
+    Your browser does not support canvas elements.
+    </canvas>
+    
+    <script>
+    
+    function health(){
+        var canvas = document.getElementById("playa");
+        var ctx = canvas.getContext("2d"); 
+          ctx.fillStyle = "black";
+            ctx.fillRect(170,100,800,25)
+            ctx.fillStyle = "green";
+            
+            let playerbar = hp/hpstart * 800
+            ctx.fillRect(170,100,playerbar,25);
+    }
+    
+    
+    </script>
+
+    <img id="image" style="top: 0px; left: 0px; width: 1600px; transform: deg(0); visibility:visible" src="wow.png" alt="pokeball">
+   
+    <img id="start2" style="top: 280px; left: 580px; width: 380px;  transform: deg(0); visibility:visible" src="torchicfinal2.png" alt="pokeball" onclick="torchic()">
+    <img id="start3" style="top: 250px; left: 280px; width: 350px; ; transform: deg(0); visibility:visible" src="treeman.png" alt="pokeball" onclick="treeko()">
+     <img id="start1" style="top: 230px; left: 850px; width: 512px;  transform: deg(0); visibility:visible" src="mudkipfinal.png" alt="pokeball" onclick="mudkip()">
+     
+
+      <img id="start1behind" style="top: 300px; left: 50px; width: 700px;  transform: deg(0); visibility:hidden" src="mudbehindfinal.png" alt="pokeball" >
+
+       <img id="start2behind" style="top: 200px; left: 50px; width: 650px;  transform: deg(0); visibility:hidden" src="chickbehind.png" alt="pokeball" >
+
+      <img id="start3behind" style="top: 300px; left: 50px; width: 650px;  transform: deg(0); visibility:hidden" src="trees.png" alt="pokeball" >
+      
+
+   
+  </div>
+
 </body>
-</html>   
+
+
+
+
+</html>

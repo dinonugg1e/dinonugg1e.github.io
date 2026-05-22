@@ -1,6 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <style>
+body {
+  background-color: gray;
+}
+a:link {
+  color: Pink;
+  background-color: Black;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+a:visited {
+  color: pink;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:hover {
+  color: purple;
+  font-size: 21px;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:active {
+  color: black;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+\\ body {
+  background-image: url("BG.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+div.section {
+  min-height: 100vh;
+  margin: 20px;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+div.menu {
+  font-family: "Source Code Pro", system-ui;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 22px;
+  width: 80px;
+  overflow: hidden;
+  background-color: black;
+  color: pink;
+  transition: all 0.2s;
+}
+
+div.menu:hover {
+  height: 120px;
+  width: 120px;
+  background-color: black;
+}
+
+div.header {
+  text-align: right;
+  font-family: "Source Code Pro", system-ui;
+  font-size: 20px;
+  transition: all 0.5s;
+}
+
+div.header:hover {
+  font-size: 22px;
+}
+
+p {
+  font-size: 25px;
+  margin: 10px;
+  color: pink;
+  text-align: left;
+  transition: all 0.2s;
+}
+
+h1 {
+  color: pink;
+}
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+p.big {
+  font-size: 35px;
+  margin: 10px;
+  color: pink;
+  float: right;
+}
+
+img {
+  width: 300px;
+  transition: all 0.5s;
+}
+
+img.move:hover {
+  width: 350px;
+  rotate: 5deg;
+}
+
+img.left {
+  float: right;
+  padding: 30px;
+}
+img.bigred {
+  float: center;
+}
+
+p.order {
+  font-size: 45px;
+}
+
+      
+    </style>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -14,16 +139,22 @@
   <body>
     <div class="menu">
       <br />
-      <a href="page 2.html">page 2</a>
-      <a href="#section1">Process</a><br />
-      <a href="#section2"> Prices</a><br />
-      <a href="#section3"> Order</a>
+      <a href="page 2.html">Artwork</a>
+      <a href="#section1">Projects</a><br />
+      <a href="#section2"> Music</a><br />
+      <a href="#section3"> Education</a>
     </div>
 
     <div class="section header" id="home">
-      <h1>Home</h1>
+      <h1>Welcome</h1>
+      <p>
+        Hello, This website is currenty under construcgion, but it is to be a
+        portfolio of Aryaman Bimali, who is currenty a high school studnent
+        attending peak to peak
+      </p>
     </div>
 
     ]
   </body>
 </html>
+
